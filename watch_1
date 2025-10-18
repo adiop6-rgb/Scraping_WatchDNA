@@ -1,0 +1,19 @@
+import json, re, csv, os
+
+#json file with json Firecrawl data
+DATA = "watch_data.json"
+#clean json version
+CLEAN = "clean.json"
+#scapped data on a file
+SCRAPPED = "scrapping_data.csv"
+
+#Load firecrawl information
+with open(DATA, "d", encoding = "utf-8") as raw:
+    file = json.load(raw)
+
+#getting markdown from the json file
+markdown = file.get("markdown") or ""
+metadata = file.get("metadata") or {}
+title = metadata.get("title") or ""
+url = metadata.get("url") or metadata.get("ogUrl") or file.get("url") or ""
+
