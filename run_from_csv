@@ -1,0 +1,18 @@
+import csv
+import subprocess
+
+INPUT_FILE = "products.csv"
+
+with open(INPUT_FILE, newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+
+    for row in reader:
+        url = row["product_url"]
+        print(f"Scraping: {url}")
+
+        subprocess.run([
+            "python",
+            "ai_watch_scraper.py",
+            "--product-url", url,
+            "--output", "output.csv"
+        ])
