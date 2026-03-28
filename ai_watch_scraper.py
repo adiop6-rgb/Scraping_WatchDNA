@@ -3258,6 +3258,9 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         )
         write_csv(rows, output_headers, output_path)
         print(f"Wrote {len(rows)} rows → {output_path}")
+        print("CSV OUTPUT:")
+        with open(output_path, "r") as f:
+            print(f.read())
 
 
 if __name__ == "__main__":
